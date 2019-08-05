@@ -43,9 +43,9 @@ func InitHTTP(config HTTPConfig, controller *FileController) {
 		auth = basicAuth
 	}
 	router.GET("/healthz", health)
-	router.GET("/bucketrepo/*filepath", auth(controller.GetFile, config))
-	router.HEAD("/bucketrepo/*filepath", auth(controller.GetFile, config))
-	router.PUT("/bucketrepo/*filepath", auth(controller.PutFile, config))
+	router.GET("/repository/*filepath", auth(controller.GetFile, config))
+	router.HEAD("/repository/*filepath", auth(controller.GetFile, config))
+	router.PUT("/repository/*filepath", auth(controller.PutFile, config))
 
 	log.Infof("Starting http server on %q", config.Address)
 	if config.HTTPS {
